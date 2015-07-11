@@ -10,7 +10,8 @@ local config = {
 	{storageKey = 10025, teleportPosition = Position(32337, 32837, 8)},
 	{storageKey = 10026, teleportPosition = Position(32628, 32743, 4)},
 	{storageKey = 10027, teleportPosition = Position(32213, 31132, 8)},
-	{storageKey = 10028, teleportPosition = Position(32786, 31245, 5)}
+	{storageKey = 10028, teleportPosition = Position(32786, 31245, 5)},
+	{storageKey = 10029, teleportPosition = Position(33594, 31899, 4)}
 }
 
 function onStepIn(creature, item, position, fromPosition)

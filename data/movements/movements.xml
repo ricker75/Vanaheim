@@ -29,7 +29,7 @@
 	<movevent event="StepIn" fromaid="50220" toaid="50229" script="others/vengothTeleports.lua" />
 
 	<!--- Shrines Portals -->
-	<movevent event="StepIn" fromuid="9069" touid="9116" script="others/shrinesportal.lua" />
+	<movevent event="StepIn" fromuid="9069" touid="9120" script="others/shrinesportal.lua" />
 	<movevent event="StepIn" actionid="9117" script="others/shrinesportal_out.lua" />
 	
 	<!--- Oramond Portals -->
