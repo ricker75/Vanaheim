@@ -31022,8 +31022,8 @@
 		<attribute key="duration" value="3" />
 		<attribute key="description" value="Awarded by TibiaLatina.Wikia.com. My sad story is told by few living humans but many dead warriors." />
 	</item>
-	<item id="23810" article="the" name="Lion's Heart">
-		<attribute key="weight" value="830" />
+	<item id="23810" name="The Lion's Heart">
+		<attribute key="weight" value="200" />
 		<attribute key="description" value="The amulet looks like a golden lion's head. A hermit in Carlin might tell you more about it." />
 	</item>
 	<item id="23816" article="a" name="war backpack">

@@ -307,6 +307,17 @@ local config = {
 			{sound = 'GRRRRRRRRRRR', text = 'The shock head is growling at you.'}
 		},
 		success = {sound = 'Grrrrrrr', text = 'You tamed the shock head.'}
+	},
+	[23810]	= {
+		name = 'noble lion',
+		id = 40,
+		type = TYPE_MONSTER,
+		chance = 30,
+		fail = {
+			{run = true, text = 'The noble lion ran away.'},
+			{sound = 'GRRRRRRRRRRR', text = 'The noble lion is growling at you.'}
+		},
+		success = {sound = 'Grrrrrrr', text = 'You tamed the noble lion.'}
 	}
 }
 

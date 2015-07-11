@@ -73,6 +73,7 @@
 	<action itemid="18516" script="other/taming.lua" />
 	<action itemid="20138" script="other/taming.lua" />
 	<action itemid="22608" script="other/taming.lua" />
+	<action itemid="23810" script="other/taming.lua" />
 
 	<!-- Offline Training -->
 	<action fromid="18488" toid="18492" script="other/offlinetraining.lua" />
