@@ -13,7 +13,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You successfully harvest some juicy roots.')
 			player:addItem(23662, 1)
 			item:transform(item.itemid + 2)
-			addEvent(revertRoot, 300000, toPosition, 23477, 23475)
+			addEvent(revertRoot, 120000, toPosition, 23477, 23475)
 			toPosition:sendMagicEffect(CONST_ME_GREEN_RINGS)
 			if player:getStorageValue(Storage.Oramond.QuestLine) <= 0 then
 				player:setStorageValue(Storage.Oramond.QuestLine, 1)
@@ -25,7 +25,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		else
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'Your harvesting attempt destroyed more of the juicy roots than you could salvage.')
 			item:transform(item.itemid + 2)
-			addEvent(revertRoot, 300000, toPosition, 23477, 23475)
+			addEvent(revertRoot, 120000, toPosition, 23477, 23475)
 			toPosition:sendMagicEffect(CONST_ME_GREEN_RINGS)
 		end
 	elseif item.itemid == 23476 then
@@ -33,7 +33,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You successfully harvest some juicy roots.')
 			player:addItem(23662, 1)
 			item:transform(item.itemid + 2)
-			addEvent(revertRoot, 300000, toPosition, 23478, 23476)
+			addEvent(revertRoot, 120000, toPosition, 23478, 23476)
 			toPosition:sendMagicEffect(CONST_ME_GREEN_RINGS)
 			if player:getStorageValue(Storage.Oramond.QuestLine) <= 0 then
 				player:setStorageValue(Storage.Oramond.QuestLine, 1)
@@ -45,7 +45,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		else
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'Your harvesting attempt destroyed more of the juicy roots than you could salvage.')
 			item:transform(item.itemid + 2)
-			addEvent(revertRoot, 300000, toPosition, 23478, 23476)
+			addEvent(revertRoot, 120000, toPosition, 23478, 23476)
 			toPosition:sendMagicEffect(CONST_ME_GREEN_RINGS)
 		end
 	elseif item.itemid == 23477 or item.itemid == 23478 then
