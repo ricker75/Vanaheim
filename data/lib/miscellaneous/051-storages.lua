@@ -214,6 +214,19 @@ Storage = {
 		Mission73 = 9949,
 		Mission74 = 9876
 	},
+	Oramond = {
+		QuestLine = 10060,
+		VotingPoints = 10061,
+
+		MissionToTakeRoots = 20060,
+		HarvestedRootCount = 20061,
+	},
+	RathletonQuest = {
+		QuestLine = 10080,
+		VotesCasted = 10081,
+
+		Rank = 10082,
+	},
 	OutfitQuest = {
 		DefaultStart = 12010, -- until all outfit quests are completed
 		Ref = 12010,

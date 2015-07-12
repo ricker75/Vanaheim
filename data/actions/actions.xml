@@ -17,6 +17,7 @@
 	
 	<!-- Oramond -->
 	<action fromaid="50000" toaid="50001" script="oramond/lever.lua" />
+	<action fromid="23475" toid="23478" script="oramond/totakeroots.lua" />
 
 	<!-- Adventurer's Guild -->
 	<action itemid="18559" script="adventurers guild/adventurers_stone.lua" />
