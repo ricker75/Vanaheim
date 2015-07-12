@@ -484,6 +484,14 @@
 	<action itemid="9750" function="decreaseItemId" />
 	<action itemid="19691" function="increaseItemId" />
 	<action itemid="19692" function="decreaseItemId" />
+	<action itemid="22868" function="increaseItemId" />
+	<action itemid="22869" function="decreaseItemId" />
+	<action itemid="22870" function="increaseItemId" />
+	<action itemid="22871" function="decreaseItemId" />
+	<action itemid="22872" function="increaseItemId" />
+	<action itemid="22873" function="decreaseItemId" />
+	<action itemid="22874" function="increaseItemId" />
+	<action itemid="22875" function="decreaseItemId" />
 
 	<!-- Food -->
 	<action itemid="2328" script="other/food.lua" />
@@ -524,6 +532,7 @@
 	<action itemid="18397" script="other/food.lua" />
 	<action itemid="19737" script="other/food.lua" />
 	<action fromid="20100" toid="20101" script="other/food.lua" />
+	<action itemid="23517" script="other/food.lua" />
 	<action itemid="9999" script="other/blessedsteak.lua" />
 
 	<!-- Spellbooks -->

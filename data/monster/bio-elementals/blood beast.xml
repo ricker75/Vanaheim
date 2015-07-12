@@ -49,9 +49,17 @@
 		<voice sentence="*grlb*" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="149" chance="100000" />	<!-- gold coin -->
-		<item id="2148" chance="100" />						<!-- slime heart -->
-		<item id="2148" chance="100" />						<!-- poisoned fang -->
-		<item id="7588" chance="8000" />						<!-- strong health potion -->
+		<item id="2148" countmax="139" chance="100000" /><!-- gold coin -->
+		<item id="7366" countmax="4" chance="8210"/><!-- viper star -->
+		<item id="23554" chance="860"/><!-- glooth amulet -->
+		<item id="23551" chance="1030"/><!-- glooth axe -->
+		<item id="23550" chance="970"/><!-- glooth blade -->
+		<item id="23549" chance="990"/><!-- glooth club -->
+		<item id="23517" chance="9870"/><!-- glooth steak -->
+		<item id="23566" chance="5710" /><!-- poisoned fang -->
+		<item id="10557" chance="5710" /><!-- poisonous slime -->
+		<item id="23565" chance="5710" /><!-- slime heart -->
+		<item id="7588" chance="2008" /><!-- strong health potion -->
+		<item id="23522" chance="300"/><!-- glooth spear -->
 	</loot>
 </monster>
