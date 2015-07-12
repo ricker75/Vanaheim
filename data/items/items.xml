@@ -30621,6 +30621,8 @@
 		<attribute key="duration" value="600" />
 		<attribute key="corpseType" value="blood" />
 	</item>
+	<item id="23417" article="a" name="slime slide" />
+	<item id="23419" article="a" name="slime slide" />
 	<item fromid="23421" toid="23422" article="a" name="winch" />
 	<item fromid="23429" toid="23430" article="a" name="winch" />
 	<item id="23459" name="peppermoon bells" />
