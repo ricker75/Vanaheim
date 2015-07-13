@@ -28,7 +28,7 @@
 		<attack name="speed" interval="4000" chance="20" radius="7" target="1" speedchange="-400">
 			<attribute key="areaEffect" value="poff" />
 		</attack>
-		<attack name="outfit" interval="2000" chance="1" target="1" range="7" monster="clay guardian" duration="3000" />
+		<attack name="outfit" interval="2000" chance="10" target="1" range="7" monster="clay guardian" duration="3000" />
 	</attacks>
 	<defenses armor="30" defense="30">
 		<defense name="healing" interval="2000" chance="25" min="150" max="300">
