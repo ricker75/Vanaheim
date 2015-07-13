@@ -1971,7 +1971,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Item", "getCharges", LuaScriptInterface::luaItemGetCharges);
 	registerMethod("Item", "getFluidType", LuaScriptInterface::luaItemGetFluidType);
 	registerMethod("Item", "getWeight", LuaScriptInterface::luaItemGetWeight);
-	
+
 	registerMethod("Item", "getSubType", LuaScriptInterface::luaItemGetSubType);
 
 	registerMethod("Item", "getName", LuaScriptInterface::luaItemGetName);
@@ -2233,10 +2233,6 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "getContainerId", LuaScriptInterface::luaPlayerGetContainerId);
 	registerMethod("Player", "getContainerById", LuaScriptInterface::luaPlayerGetContainerById);
 	registerMethod("Player", "getContainerIndex", LuaScriptInterface::luaPlayerGetContainerIndex);
-	
-	registerMethod("Player", "startLiveCast", LuaScriptInterface::luaPlayerStartLiveCast);
-	registerMethod("Player", "stopLiveCast", LuaScriptInterface::luaPlayerStopLiveCast);
-	registerMethod("Player", "isLiveCaster", LuaScriptInterface::luaPlayerIsLiveCaster);
 
 	// Monster
 	registerClass("Monster", "Creature", LuaScriptInterface::luaMonsterCreate);
@@ -5488,14 +5484,16 @@ int LuaScriptInterface::luaNetworkMessageSkipBytes(lua_State* L)
 
 int LuaScriptInterface::luaNetworkMessageSendToPlayer(lua_State* L)
 {
-	// networkMessage:sendToPlayer(player[, broadcast])
-	Player* player = getPlayer(L, 2);
+	// networkMessage:sendToPlayer(player)
 	NetworkMessage* message = getUserdata<NetworkMessage>(L, 1);
+	if (!message) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	Player* player = getPlayer(L, 2);
 	if (player) {
-		if (message) {
-			bool broadcast = getBoolean(L, 3, true);
-			player->sendNetworkMessage(*message, broadcast);
-		}
+		player->sendNetworkMessage(*message);
 		pushBoolean(L, true);
 	} else {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
@@ -9187,47 +9185,6 @@ int LuaScriptInterface::luaPlayerGetContainerIndex(lua_State* L)
 	return 1;
 }
 
-int32_t LuaScriptInterface::luaPlayerStartLiveCast(lua_State* L)
-{
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
-
-	std::string password;
-	if (lua_gettop(L) == 2) {
-		password = getString(L, 2);
-	}
-
-	lua_pushboolean(L, player->startLiveCast(password));
-	return 1;
-}
-
-int32_t LuaScriptInterface::luaPlayerStopLiveCast(lua_State* L)
-{
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
-
-	lua_pushboolean(L, player->stopLiveCast());
-	return 1;
-}
-
-int32_t LuaScriptInterface::luaPlayerIsLiveCaster(lua_State* L)
-{
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
-
-	lua_pushboolean(L, player->isLiveCaster());
-	return 1;
-}
-
 // Monster
 int LuaScriptInterface::luaMonsterCreate(lua_State* L)
 {
@@ -11064,7 +11021,7 @@ int LuaScriptInterface::luaConditionCreate(lua_State* L)
 	// Condition(conditionType[, conditionId = CONDITIONID_COMBAT])
 	ConditionType_t conditionType = getNumber<ConditionType_t>(L, 2);
 	ConditionId_t conditionId = getNumber<ConditionId_t>(L, 3, CONDITIONID_COMBAT);
-	
+
 	Condition* condition = Condition::createCondition(conditionId, conditionType, 0, 0);
 	if (condition) {
 		pushUserdata<Condition>(L, condition);

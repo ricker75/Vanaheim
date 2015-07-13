@@ -44,7 +44,6 @@ class ConfigManager
 			WARN_UNSAFE_SCRIPTS,
 			CONVERT_UNSAFE_SCRIPTS,
 			CLASSIC_EQUIPMENT_SLOTS,
-			ENABLE_LIVE_CASTING,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
@@ -104,7 +103,6 @@ class ConfigManager
 			MAX_MARKET_OFFERS_AT_A_TIME_PER_PLAYER,
 			EXP_FROM_PLAYERS_LEVEL_RANGE,
 			MAX_PACKETS_PER_SECOND,
-			LIVE_CAST_PORT,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};
@@ -120,7 +118,7 @@ class ConfigManager
 		static std::string getGlobalString(lua_State* L, const char* identifier, const char* _default);
 		static int32_t getGlobalNumber(lua_State* L, const char* identifier, const int32_t _default = 0);
 		static bool getGlobalBoolean(lua_State* L, const char* identifier, const bool _default);
-		
+
 		std::string string[LAST_STRING_CONFIG];
 		int32_t integer[LAST_INTEGER_CONFIG];
 		bool boolean[LAST_BOOLEAN_CONFIG];

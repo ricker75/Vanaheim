@@ -1104,9 +1104,9 @@ class Player final : public Creature, public Cylinder
 				client->sendFightModes();
 			}
 		}
-		void sendNetworkMessage(const NetworkMessage& message, bool broadCast = true) {
+		void sendNetworkMessage(const NetworkMessage& message) {
 			if (client) {
-				client->writeToOutputBuffer(message, broadCast);
+				client->writeToOutputBuffer(message);
 			}
 		}
 
@@ -1138,22 +1138,6 @@ class Player final : public Creature, public Cylinder
 		void learnInstantSpell(const std::string& spellName);
 		void forgetInstantSpell(const std::string& spellName);
 		bool hasLearnedInstantSpell(const std::string& spellName) const;
-		
-		bool startLiveCast(const std::string& password) {
-			return client != nullptr && client->startLiveCast(password);
-		}
-
-		bool stopLiveCast() {
-			return client != nullptr && client->stopLiveCast();
-		}
-
-		bool isLiveCaster() const {
-			return client != nullptr && client->isLiveCaster();
-		}
-
-		const std::map<uint8_t, OpenContainer>& getOpenContainers() const {
-			return openContainers;
-		}
 
 	protected:
 		std::forward_list<Condition*> getMuteConditions() const;

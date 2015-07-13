@@ -161,10 +161,11 @@ void mainLoader(int, char*[], ServiceManager* services)
 
 	std::cout << "Este servidor foi desenvolvido por " << STATUS_SERVER_DEVELOPERS << std::endl;
 	std::cout << "Visite nosso forum para updates, suporte e pedidos: http://xtibia.com/." << std::endl;
+	std::cout << "Um oferecimento ServerSoft, tecnologia ao seu alcance." << std::endl;
 	std::cout << std::endl;
 
 	// read global config
-	std::cout << ">> Carregando configuracao" << std::endl;
+	std::cout << ">> Carregando configuracoes" << std::endl;
 	if (!g_config.load()) {
 		startupErrorMessage("Falha ao carregar o config.lua!");
 		return;
@@ -308,7 +309,7 @@ void mainLoader(int, char*[], ServiceManager* services)
 
 #ifndef _WIN32
 	if (getuid() == 0 || geteuid() == 0) {
-		std::cout << "> Aviso: " << STATUS_SERVER_NAME << " foi executado com usuario root, por favor considere executa-lo como um usuario normal." << std::endl;
+		std::cout << "> Aviso: O servidor foi executado com usuario root, por favor considere executa-lo como um usuario normal." << std::endl;
 	}
 #endif
 

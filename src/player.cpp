@@ -2407,11 +2407,9 @@ bool Player::addVIP(uint32_t vipGuid, const std::string& vipName, VipStatus_t st
 	}
 
 	IOLoginData::addVIPEntry(accountNumber, vipGuid, "", 0, false);
-
 	if (client) {
 		client->sendVIP(vipGuid, vipName, "", 0, false, status);
 	}
-
 	return true;
 }
 
@@ -3393,18 +3391,16 @@ void Player::doAttacking(uint32_t)
 		Item* tool = getWeapon();
 		const Weapon* weapon = g_weapons->getWeapon(tool);
 		if (weapon) {
-			uint32_t delay;
-
-			if (!weapon->interruptSwing() || canDoAction()) {
+			if (!weapon->interruptSwing()) {
 				result = weapon->useWeapon(this, tool, attackedCreature);
-				delay = getAttackSpeed();
+			} else if (!canDoAction()) {
+				uint32_t delay = getNextActionTime();
+				SchedulerTask* task = createSchedulerTask(delay, std::bind(&Game::checkCreatureAttack,
+				                      &g_game, getID()));
+				setNextActionTask(task);
 			} else {
-				delay = getNextActionTime();
+				result = weapon->useWeapon(this, tool, attackedCreature);
 			}
-
-			SchedulerTask* task = createSchedulerTask(delay, std::bind(&Game::checkCreatureAttack,
-									 &g_game, getID()));
-			setNextActionTask(task);
 		} else {
 			result = Weapon::useFist(this, attackedCreature);
 		}

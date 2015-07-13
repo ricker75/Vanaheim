@@ -22,7 +22,7 @@
 
 #define STATUS_SERVER_NAME "The Forgotten Server"
 #define STATUS_SERVER_VERSION "1.2"
-#define STATUS_SERVER_DEVELOPERS "Mark Samman e editado Bruno Minervino"
+#define STATUS_SERVER_DEVELOPERS "Mark Samman e editado por Bruno Minervino"
 
 #define CLIENT_VERSION_MIN 1078
 #define CLIENT_VERSION_MAX 1079

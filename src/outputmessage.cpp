@@ -166,8 +166,6 @@ OutputMessage_ptr OutputMessagePool::getOutputMessage(Protocol* protocol, bool a
 void OutputMessagePool::configureOutputMessage(OutputMessage_ptr msg, Protocol* protocol, bool autosend)
 {
 	msg->reset();
-	msg->setBroadcastMsg(false);
-	msg->setUnencryptedCopy(OutputMessage_ptr());
 
 	if (autosend) {
 		msg->setState(OutputMessage::STATE_ALLOCATED);
