@@ -347,6 +347,9 @@
 	<!-- Cryo-Elementals -->
 	<monster name="Ice Golem" file="cryo-elementals/ice golem.xml" />
 
+	<!-- Customs -->
+	<monster name="Trailemaw" file="customs/trailemaw.xml" />
+
 	<!-- Deeplings -->
 	<monster name="Deepling Brawler" file="deeplings/deepling brawler.xml" />
 	<monster name="Deepling Elite" file="deeplings/deepling elite.xml" />

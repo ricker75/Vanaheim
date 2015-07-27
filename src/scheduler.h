@@ -54,7 +54,7 @@ class SchedulerTask : public Task
 
 inline SchedulerTask* createSchedulerTask(uint32_t delay, const std::function<void (void)>& f)
 {
-	return new SchedulerTask(std::max<uint32_t>(delay, SCHEDULER_MINTICKS), f);
+	return new SchedulerTask(delay, f);
 }
 
 struct TaskComparator {
