@@ -24,28 +24,16 @@
 #include "luascript.h"
 #include "chat.h"
 #include "player.h"
-#include "item.h"
 #include "game.h"
-#include "house.h"
-#include "housetile.h"
 #include "protocolstatus.h"
-#include "combat.h"
 #include "spells.h"
-#include "condition.h"
-#include "monsters.h"
-#include "baseevents.h"
 #include "iologindata.h"
 #include "configmanager.h"
-#include "town.h"
-#include "vocation.h"
 #include "teleport.h"
-#include "ban.h"
-#include "mounts.h"
 #include "databasemanager.h"
 #include "bed.h"
 #include "monster.h"
 #include "scheduler.h"
-#include "raids.h"
 #include "databasetasks.h"
 
 extern Chat* g_chat;
@@ -5780,9 +5768,9 @@ int LuaScriptInterface::luaItemGetParent(lua_State* L)
 	if (Creature* creature = parent->getCreature()) {
 		pushUserdata<Creature>(L, creature);
 		setCreatureMetatable(L, -1, creature);
-	} else if (Item* item = parent->getItem()) {
-		pushUserdata<Item>(L, item);
-		setItemMetatable(L, -1, item);
+	} else if (Item* parentItem = parent->getItem()) {
+		pushUserdata<Item>(L, parentItem);
+		setItemMetatable(L, -1, parentItem);
 	} else if (Tile* tile = parent->getTile()) {
 		pushUserdata<Tile>(L, tile);
 		setMetatable(L, -1, "Tile");
@@ -5812,9 +5800,9 @@ int LuaScriptInterface::luaItemGetTopParent(lua_State* L)
 	if (Creature* creature = topParent->getCreature()) {
 		pushUserdata<Creature>(L, creature);
 		setCreatureMetatable(L, -1, creature);
-	} else if (Item* item = topParent->getItem()) {
-		pushUserdata<Item>(L, item);
-		setItemMetatable(L, -1, item);
+	} else if (Item* topParentItem = topParent->getItem()) {
+		pushUserdata<Item>(L, topParentItem);
+		setItemMetatable(L, -1, topParentItem);
 	} else if (Tile* tile = topParent->getTile()) {
 		pushUserdata<Tile>(L, tile);
 		setMetatable(L, -1, "Tile");
@@ -6740,9 +6728,9 @@ int LuaScriptInterface::luaCreatureGetParent(lua_State* L)
 		return 1;
 	}
 
-	if (Creature* creature = parent->getCreature()) {
-		pushUserdata<Creature>(L, creature);
-		setCreatureMetatable(L, -1, creature);
+	if (Creature* parentCreature = parent->getCreature()) {
+		pushUserdata<Creature>(L, parentCreature);
+		setCreatureMetatable(L, -1, parentCreature);
 	} else if (Item* item = parent->getItem()) {
 		pushUserdata<Item>(L, item);
 		setItemMetatable(L, -1, item);

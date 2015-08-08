@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <movements>
+	<!-- Treiners -->
+	<movevent event="StepIn" actionid="51993" script="train.lua"/>
+	<movevent event="StepOut" actionid="51993" script="train.lua"/>
+
 	<!-- Item Teleport Destinations -->
 	<movevent event="AddItem" tileitem="1" itemid="1387" script="others/itemteleports.lua" />
 	<movevent event="AddItem" tileitem="1" itemid="8058" script="others/itemteleports.lua" />
