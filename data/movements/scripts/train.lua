@@ -1,7 +1,7 @@
 local config = {
 	time = 120, -- minutes
 	str = 98765, -- storage
-	pos = {x = 162, y = 51, z = 6} -- position
+	pos = {x = 31373, y = 32780, z = 7} -- position
 }
 
 function onStepIn(creature, item, position, fromPosition)
