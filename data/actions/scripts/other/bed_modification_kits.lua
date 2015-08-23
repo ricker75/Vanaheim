@@ -1,23 +1,23 @@
-local BEDS = {
+local beds = {
 	[7904] = {{7811, 7812}, {7813, 7814}}, -- green kit
 	[7905] = {{7819, 7820}, {7821, 7822}}, -- yellow kit
 	[7906] = {{7815, 7816}, {7817, 7818}}, -- red kit
-	[7907] = {{1754, 1755}, {1760, 1761}},  -- removal kit
+	[7907] = {{1754, 1755}, {1760, 1761}}, -- removal kit
 	[20252] = {{20197, 20198}, {20199, 20200}} -- canopy kit
 }
 
-local function internalBedTransform(item, target, toPosition, ids)
-	target:transform(ids[1])
+local function internalBedTransform(item, target, toPosition, itemArray)
+	target:transform(itemArray[1])
 	target:getPosition():sendMagicEffect(CONST_ME_POFF)
 
-	toPosition:getTile():getItemByType(ITEM_TYPE_BED):transform(ids[2])
+	toPosition:getTile():getItemByType(ITEM_TYPE_BED):transform(itemArray[2])
 	toPosition:sendMagicEffect(CONST_ME_POFF)
 
 	item:remove()
 end
 
 function onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local newBed = BEDS[item.itemid]
+	local newBed = beds[item.itemid]
 	if not newBed then
 		return false
 	end
@@ -32,7 +32,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return true
 	end
 
-	for kit, bed in pairs(BEDS) do
+	for kit, bed in pairs(beds) do
 		if bed[1][1] == target.itemid or isInArray({1758, 5502, 18027}, target.itemid) then
 			toPosition:sendMagicEffect(CONST_ME_POFF)
 			toPosition.y = toPosition.y + 1

@@ -23,17 +23,15 @@ function onSay(player, words, param)
 	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, 'Position: ' .. string.format('(%0.5d / %0.5d / %0.3d)', target:getPosition().x, target:getPosition().y, target:getPosition().z))
 	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, 'IP: ' .. Game.convertIpToString(targetIp))
 
-	local tmpPlayers, tmpPlayer = Game.getPlayers()
 	local players = {}
-	for i = 1, #tmpPlayers do
-		tmpPlayer = tmpPlayers[i]
-		if tmpPlayer:getIp() == targetIp and tmpPlayer ~= target then
-			players[#players + 1] = tmpPlayer:getName() .. ' [' .. tmpPlayer:getLevel() .. ']'
+	for _, targetPlayer in ipairs(Game.getPlayers()) do
+		if targetPlayer:getIp() == targetIp and targetPlayer ~= target then
+			players[#players + 1] = targetPlayer:getName() .. " [" .. targetPlayer:getLevel() .. "]"
 		end
 	end
 
 	if #players > 0 then
-		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, 'Other players on same IP: ' .. table.concat(players, ', ') .. '.')
+		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Other players on same IP: " .. table.concat(players, ", ") .. ".")
 	end
 	return false
 end

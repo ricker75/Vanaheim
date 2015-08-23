@@ -29300,6 +29300,18 @@
 		<attribute key="decayTo" value="21558" />
 		<attribute key="duration" value="120" />
 	</item>
+	<item id="21564" article="a" name="flask mushroom fertilizer">
+		<attribute key="weight" value="180" />
+		<attribute key="description" value="It holds a liquid concentrate developed by the gnomes to fertilise mushrooms." />
+	</item>
+	<item id="21565" article="a" name="gardener mushroom"/>
+	<item id="21566" article="a" name="partially charged lodestone">
+		<attribute key="weight" value="300" />
+	</item>
+	<item id="21567" article="a" name="magnetic monolith"/>
+	<item id="21568" article="a" name="highly charged lodestone">
+		<attribute key="weight" value="300" />
+	</item>
 	<item id="21569" name="gnomish supplies">
 		<attribute key="description" value="It contains the clothes of a dwarf." />
 		<attribute key="weight" value="800" />

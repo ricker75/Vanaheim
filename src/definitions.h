@@ -24,9 +24,9 @@
 #define STATUS_SERVER_VERSION "1.2"
 #define STATUS_SERVER_DEVELOPERS "Mark Samman e editado por Bruno Minervino"
 
-#define CLIENT_VERSION_MIN 1078
-#define CLIENT_VERSION_MAX 1079
-#define CLIENT_VERSION_STR "10.79"
+#define CLIENT_VERSION_MIN 1080
+#define CLIENT_VERSION_MAX 1080
+#define CLIENT_VERSION_STR "10.80"
 
 #ifndef __FUNCTION__
 #define __FUNCTION__ __func__

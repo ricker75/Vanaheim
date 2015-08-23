@@ -22,7 +22,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return false
 	end
 
-	doPlayerSetOfflineTrainingSkill(player, skill)
+	player:setOfflineTrainingSkill(skill)
 	player:remove()
 	return true
 end

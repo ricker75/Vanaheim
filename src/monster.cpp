@@ -1265,16 +1265,16 @@ bool Monster::getDistanceStep(const Position& targetPos, Direction& dir, bool fl
 	int32_t distance = std::max<int32_t>(dx, dy);
 
 	if (!flee && (distance > mType->targetDistance || !g_game.isSightClear(creaturePos, targetPos, true))) {
-		return false;    // let the A* calculate it
+		return false; // let the A* calculate it
 	} else if (!flee && distance == mType->targetDistance) {
-		return true;    // we don't really care here, since it's what we wanted to reach (a dancestep will take of dancing in that position)
+		return true; // we don't really care here, since it's what we wanted to reach (a dancestep will take of dancing in that position)
 	}
 
 	int_fast32_t offsetx = Position::getOffsetX(creaturePos, targetPos);
 	int_fast32_t offsety = Position::getOffsetY(creaturePos, targetPos);
 
 	if (dx <= 1 && dy <= 1) {
-		//seems like a target is near, it this case we need to slow down our movements (as a monster)
+		// seems like a target is near, it this case we need to slow down our movements (as a monster)
 		if (stepDuration < 2) {
 			stepDuration++;
 		}
@@ -1283,14 +1283,14 @@ bool Monster::getDistanceStep(const Position& targetPos, Direction& dir, bool fl
 	}
 
 	if (offsetx == 0 && offsety == 0) {
-		return getRandomStep(creaturePos, dir);    // player is "on" the monster so let's get some random step and rest will be taken care later.
+		return getRandomStep(creaturePos, dir); // player is "on" the monster so let's get some random step and rest will be taken care later.
 	}
 
 	if (dx == dy) {
-		//player is diagonal to the monster
+		// player is diagonal to the monster
 		if (offsetx >= 1 && offsety >= 1) {
 			// player is NW
-			//escape to SE, S or E [and some extra]
+			// escape to SE, S or E [and some extra]
 			bool s = canWalkTo(creaturePos, DIRECTION_SOUTH);
 			bool e = canWalkTo(creaturePos, DIRECTION_EAST);
 
@@ -1335,8 +1335,8 @@ bool Monster::getDistanceStep(const Position& targetPos, Direction& dir, bool fl
 
 			return true;
 		} else if (offsetx <= -1 && offsety <= -1) {
-			//player is SE
-			//escape to NW , W or N [and some extra]
+			// player is SE
+			// escape to NW , W or N [and some extra]
 			bool w = canWalkTo(creaturePos, DIRECTION_WEST);
 			bool n = canWalkTo(creaturePos, DIRECTION_NORTH);
 
@@ -1383,8 +1383,8 @@ bool Monster::getDistanceStep(const Position& targetPos, Direction& dir, bool fl
 
 			return true;
 		} else if (offsetx >= 1 && offsety <= -1) {
-			//player is SW
-			//escape to NE, N, E [and some extra]
+			// player is SW
+			// escape to NE, N, E [and some extra]
 			bool n = canWalkTo(creaturePos, DIRECTION_NORTH);
 			bool e = canWalkTo(creaturePos, DIRECTION_EAST);
 			if (n && e) {
@@ -1431,7 +1431,7 @@ bool Monster::getDistanceStep(const Position& targetPos, Direction& dir, bool fl
 			return true;
 		} else if (offsetx <= -1 && offsety >= 1) {
 			// player is NE
-			//escape to SW, S, W [and some extra]
+			// escape to SW, S, W [and some extra]
 			bool w = canWalkTo(creaturePos, DIRECTION_WEST);
 			bool s = canWalkTo(creaturePos, DIRECTION_SOUTH);
 			if (w && s) {
@@ -1477,7 +1477,7 @@ bool Monster::getDistanceStep(const Position& targetPos, Direction& dir, bool fl
 		}
 	}
 
-	//Now let's decide where the player is located to the monster (what direction) so we can decide where to escape.
+	// Now let's decide where the player is located to the monster (what direction) so we can decide where to escape.
 	if (dy > dx) {
 		Direction playerDir = offsety < 0 ? DIRECTION_SOUTH : DIRECTION_NORTH;
 		switch (playerDir) {
@@ -1849,14 +1849,14 @@ void Monster::updateLookDirection()
 		int32_t dx = std::abs(offsetx);
 		int32_t dy = std::abs(offsety);
 		if (dx > dy) {
-			//look EAST/WEST
+			// look EAST/WEST
 			if (offsetx < 0) {
 				newDir = DIRECTION_WEST;
 			} else {
 				newDir = DIRECTION_EAST;
 			}
 		} else if (dx < dy) {
-			//look NORTH/SOUTH
+			// look NORTH/SOUTH
 			if (offsety < 0) {
 				newDir = DIRECTION_NORTH;
 			} else {
@@ -1918,7 +1918,7 @@ void Monster::drainHealth(Creature* attacker, int32_t damage)
 
 void Monster::changeHealth(int32_t healthChange, bool sendHealthChange/* = true*/)
 {
-	//In case a player with ignore flag set attacks the monster
+	// In case a player with ignore flag set attacks the monster
 	setIdle(false);
 	Creature::changeHealth(healthChange, sendHealthChange);
 }
@@ -1962,7 +1962,7 @@ bool Monster::convinceCreature(Creature* creature)
 	setFollowCreature(nullptr);
 	setAttackedCreature(nullptr);
 
-	//destroy summons
+	// destroy summons
 	for (Creature* summon : summons) {
 		summon->changeHealth(-summon->getHealth());
 		summon->setMaster(nullptr);
@@ -1974,7 +1974,7 @@ bool Monster::convinceCreature(Creature* creature)
 	updateTargetList();
 	updateIdleStatus();
 
-	//Notify surrounding about the change
+	// Notify surrounding about the change
 	SpectatorVec list;
 	g_game.map.getSpectators(list, getPosition(), true);
 	g_game.map.getSpectators(list, creature->getPosition(), true);
@@ -2014,7 +2014,7 @@ void Monster::getPathSearchParams(const Creature* creature, FindPathParams& fpp)
 			fpp.fullPathSearch = !canUseAttack(getPosition(), creature);
 		}
 	} else if (isFleeing()) {
-		//Distance should be higher than the client view range (Map::maxClientViewportX/Map::maxClientViewportY)
+		// Distance should be higher than the client view range (Map::maxClientViewportX/Map::maxClientViewportY)
 		fpp.maxTargetDist = Map::maxViewportX;
 		fpp.clearSight = false;
 		fpp.keepDistance = true;

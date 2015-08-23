@@ -29,6 +29,7 @@
 #include "iologindata.h"
 #include "ban.h"
 #include "game.h"
+#include <chrono>
 
 extern ConfigManager g_config;
 extern Game g_game;
@@ -88,11 +89,14 @@ void ProtocolLogin::getCharacterList(const std::string& accountName, const std::
 		output->addString(account.characters[i]);
 	}
 
-	//Add premium days
-	if (g_config.getBoolean(ConfigManager::FREE_PREMIUM)) {
-		output->add<uint16_t>(0xFFFF);    //client displays free premium
+	// Add premium days
+	if (version >= 1080) {
+		output->addByte((g_config.getBoolean(ConfigManager::FREE_PREMIUM)) ? 0x01 : 0x00);
+		auto time = std::chrono::system_clock::now() + std::chrono::hours(account.premiumDays * 24);
+		std::chrono::seconds timestamp = std::chrono::duration_cast<std::chrono::seconds>(time.time_since_epoch());
+		output->add<uint32_t>(g_config.getBoolean(ConfigManager::FREE_PREMIUM) ? 0 : timestamp.count());
 	} else {
-		output->add<uint16_t>(account.premiumDays);
+		output->add<uint16_t>(g_config.getBoolean(ConfigManager::FREE_PREMIUM) ? 0xFFFF : account.premiumDays);
 	}
 
 	send(output);

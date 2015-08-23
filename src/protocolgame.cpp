@@ -1531,7 +1531,7 @@ void ProtocolGame::sendSaleItemList(const std::list<ShopInfo>& shop)
 			if (subtype != -1) {
 				uint32_t count;
 				if (!itemType.isFluidContainer() && !itemType.isSplash()) {
-					count = player->getItemTypeCount(shopInfo.itemId, subtype);    // This shop item requires extra checks
+					count = player->getItemTypeCount(shopInfo.itemId, subtype); // This shop item requires extra checks
 				} else {
 					count = subtype;
 				}
@@ -2389,6 +2389,9 @@ void ProtocolGame::sendAddCreature(const Creature* creature, const Position& pos
 
 	msg.addByte(0x00); // can change pvp framing option
 	msg.addByte(0x00); // expert mode button enabled
+
+	msg.addString("http://static.tibia.com/images/store/");
+	msg.addByte(g_config.getNumber(ConfigManager::MAX_PACKETS_PER_SECOND));
 
 	writeToOutputBuffer(msg);
 
