@@ -110,16 +110,9 @@ int main(int argc, char* argv[])
 		serviceManager.run();
 	} else {
 		std::cout << ">> Nao ha servicos em execucao. O server NAO esta online." << std::endl;
-		g_dispatcher.addTask(createTask([]() {
-			g_dispatcher.addTask(createTask([]() {
-				g_scheduler.shutdown();
-				g_databaseTasks.shutdown();
-				g_dispatcher.shutdown();
-			}));
-			g_scheduler.stop();
-			g_databaseTasks.stop();
-			g_dispatcher.stop();
-		}));
+		g_scheduler.shutdown();
+		g_databaseTasks.shutdown();
+		g_dispatcher.shutdown();
 	}
 
 	g_scheduler.join();

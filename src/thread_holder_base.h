@@ -17,35 +17,43 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_MOUNTS_H_73716D11906A4C5C9F4A7B68D34C9BA6
-#define FS_MOUNTS_H_73716D11906A4C5C9F4A7B68D34C9BA6
+#ifndef FS_THREAD_HOLDER_H_BEB56FC46748E71D15A5BF0773ED2E67
+#define FS_THREAD_HOLDER_H_BEB56FC46748E71D15A5BF0773ED2E67
 
-struct Mount
-{
-	Mount(uint8_t id, uint16_t clientId, std::string name, int32_t speed, bool premium)
-		: name(name), speed(speed), clientId(clientId), id(id), premium(premium) {}
+#include <thread>
+#include <atomic>
+#include "enums.h"
 
-	std::string name;
-	int32_t speed;
-	uint16_t clientId;
-	uint8_t id;
-	bool premium;
-};
-
-class Mounts
+template <typename Derived>
+class ThreadHolder
 {
 	public:
-		bool reload();
-		bool loadFromXml();
-		Mount* getMountByID(uint8_t id);
-		Mount* getMountByClientID(uint16_t clientId);
-
-		const std::vector<Mount>& getMounts() const {
-			return mounts;
+		ThreadHolder(): threadState(THREAD_STATE_TERMINATED) {}
+		void start() {
+			setState(THREAD_STATE_RUNNING);
+			thread = std::thread(&Derived::threadMain, static_cast<Derived*>(this));
 		}
 
+		void stop() {
+			setState(THREAD_STATE_CLOSING);
+		}
+
+		void join() {
+			if (thread.joinable()) {
+				thread.join();
+			}
+		}
+	protected:
+		void setState(ThreadState newState) {
+			threadState.store(newState, std::memory_order_relaxed);
+		}
+
+		ThreadState getState() const {
+			return threadState.load(std::memory_order_relaxed);
+		}
 	private:
-		std::vector<Mount> mounts;
+		std::atomic<ThreadState> threadState;
+		std::thread thread;
 };
 
 #endif
