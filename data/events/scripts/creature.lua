@@ -38,6 +38,12 @@ function Creature:onTargetCombat(target)
 		return true
 	end
 
+	if self:isPlayer() and target:isPlayer() then
+		if self:getStorageValue(_Lib_Battle_Info.TeamOne.storage) >= 1 and target:getStorageValue(_Lib_Battle_Info.TeamOne.storage) >= 1 or self:getStorageValue(_Lib_Battle_Info.TeamTwo.storage) >= 1 and target:getStorageValue(_Lib_Battle_Info.TeamTwo.storage) >= 1 then
+			return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER
+		end
+	end
+
 	if target:isPlayer() then
 		if self:isMonster() then
 			local protectionStorage = target:getStorageValue(Storage.combatProtectionStorage)

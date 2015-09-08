@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <globalevents>
+	<!-- BattleField Event -->
+	<globalevent type="startup" name="NoBugBattle" script="battlefield/battlefieldstart.lua"/>
+	<globalevent interval="55000" name="BattleField" script="battlefield/battlefieldthink.lua"/>
+
 	<!-- Wrath Of The Emperor Quest -->
 	<globalevent name="WotESpyHoles" interval="5000" script="wrath of the emperor quest/spyHoles.lua" />
 
