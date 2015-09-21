@@ -17,13 +17,13 @@ function Party:onShareExperience(exp)
 	
 	local vocationId = self:getLeader():getVocation():getId()
 	if vocationId ~= VOCATION_NONE then
-		table.insert(vocationsIds, self:getLeader():getVocation():getId())
+		vocationsIds[#vocationsIds + 1] = self:getLeader():getVocation():getId()
 	end
 	
 	for _, member in ipairs(self:getMembers()) do
 		vocationId = member:getVocation():getId()
 		if not isInArray(vocationsIds, vocationId) and vocationId ~= VOCATION_NONE then
-			table.insert(vocationsIds, vocationId)
+			vocationsIds[#vocationsIds + 1] = vocationId
 		end
 	end
 	
