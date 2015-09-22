@@ -5,18 +5,27 @@ local config = {
 }
 
 function onStepIn(creature, item, position, fromPosition)
-	if not creature:isPlayer() then return false end
+	local player = creature:getPlayer()
+	if not player or player:isInGhostMode() then
+		return true
+	end
+
 	local function isTraining(uid)
 		local self = Player(uid)
+		if not self then return false end
 		return self:getStorageValue(config.str) > 0 and self:teleportTo(config.pos) or true
 	end
-    
-	check = addEvent(isTraining, config.time * 60 * 1000, creature.uid)
-	creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, '[Treiner]: Movimente-se a cada ' .. config.time .. ' minutos, caso contrario, voce sera teleportado ao templo.')
-	return creature:setStorageValue(config.str, 1)
+
+	check = addEvent(isTraining, config.time * 60 * 1000, player:getGuid())
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, '[Treiner]: Movimente-se a cada ' .. config.time .. ' minutos, caso contrario, voce sera teleportado ao templo.')
+	return player:setStorageValue(config.str, 1)
 end
 
 function onStepOut(creature, item, position, fromPosition)
-	if not creature:isPlayer() then return false end
-	return stopEvent(check) and creature:setStorageValue(config.str, -1)
+	local player = creature:getPlayer()
+	if not player or player:isInGhostMode() then
+		return true
+	end
+
+	return stopEvent(check) and player:setStorageValue(config.str, -1)
 end
