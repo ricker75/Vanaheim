@@ -685,11 +685,11 @@ void Creature::onDeath()
 					}
 				}
 
-				auto tmpIt = experienceMap.find(attacker);
-				if (tmpIt == experienceMap.end()) {
+				auto it = experienceMap.find(attacker);
+				if (it == experienceMap.end()) {
 					experienceMap[attacker] = gainExp;
 				} else {
-					tmpIt->second += gainExp;
+					it->second += gainExp;
 				}
 			}
 		}

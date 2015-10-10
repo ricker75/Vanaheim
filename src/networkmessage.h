@@ -72,8 +72,7 @@ class NetworkMessage
 				return 0;
 			}
 
-			T v;
-			memcpy(&v, buffer + position, sizeof(T));
+			T v = *reinterpret_cast<T*>(buffer + position);
 			position += sizeof(T);
 			return v;
 		}
@@ -102,7 +101,7 @@ class NetworkMessage
 				return;
 			}
 
-			memcpy(buffer + position, &value, sizeof(T));
+			*reinterpret_cast<T*>(buffer + position) = value;
 			position += sizeof(T);
 			length += sizeof(T);
 		}

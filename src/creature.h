@@ -363,6 +363,7 @@ class Creature : virtual public Thing
 		virtual uint64_t getGainedExperience(Creature* attacker) const;
 		void addDamagePoints(Creature* attacker, int32_t damagePoints);
 		bool hasBeenAttacked(uint32_t attackerId);
+		bool hasBeenHealed(uint32_t healerId);
 
 		//combat event functions
 		virtual void onAddCondition(ConditionType_t type);

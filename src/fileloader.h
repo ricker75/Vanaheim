@@ -166,12 +166,24 @@ class PropStream
 		}
 
 		template <typename T>
+		inline bool readStruct(T*& ret) {
+			if (size() < sizeof(T)) {
+				ret = nullptr;
+				return false;
+			}
+
+			ret = reinterpret_cast<const T*>(p);
+			p += sizeof(T);
+			return true;
+		}
+
+		template <typename T>
 		inline bool read(T& ret) {
 			if (size() < sizeof(T)) {
 				return false;
 			}
 
-			memcpy(&ret, p, sizeof(T));
+			ret = *reinterpret_cast<const T*>(p);
 			p += sizeof(T);
 			return true;
 		}
@@ -214,7 +226,7 @@ class PropWriteStream
 	public:
 		PropWriteStream() {
 			buffer_size = 32;
-			buffer = static_cast<char*>(malloc(buffer_size));
+			buffer = reinterpret_cast<char*>(malloc(buffer_size));
 			if (!buffer) {
 				throw std::bad_alloc();
 			}
@@ -274,7 +286,7 @@ class PropWriteStream
 				throw std::bad_alloc();
 			}
 
-			buffer = static_cast<char*>(newBuffer);
+			buffer = reinterpret_cast<char*>(newBuffer);
 		}
 
 		char* buffer;
