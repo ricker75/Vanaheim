@@ -1320,7 +1320,8 @@ bool InstantSpell::SearchPlayer(const InstantSpell*, Creature* creature, const s
 		LEVEL_SAME,
 	};
 
-	Player* playerExiva = g_game.getPlayerByName(param);
+	Player* playerExiva = nullptr;
+	g_game.getPlayerByNameWildcard(param, playerExiva);
 	if (!playerExiva) {
 		return false;
 	}
