@@ -53,7 +53,7 @@
 		<voice sentence="Roarr!" />
 	</voices>
 	<loot>
-		<item id="23549" countmax="1" chance="16010" /><!-- poisoned fang -->
+		<item id="23566" countmax="1" chance="16010" /><!-- poisoned fang -->
 		<item id="10557" countmax="1" chance="5080" /><!-- poisonous slime -->
 		<item id="23517" countmax="1" chance="3720" /><!-- glooth steak -->
 		<item id="2148" countmax="139" chance="100000" /><!-- gold coin -->
