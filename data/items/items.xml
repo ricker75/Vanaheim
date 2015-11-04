@@ -31071,6 +31071,36 @@
 		<attribute key="duration" value="3" />
 		<attribute key="description" value="Only the real killers can touch me! This item was awarded by TibiaBrasileiros.com." />
 	</item>
+	<item id="24772" article="an" name="Little Adventurer Doll">
+		<attribute key="weight" value="2613" />
+		<attribute key="description" value="This little fellow has faced many dangers. He will follow you anywhere. Awarded by TibiaGuias." />
+	</item>
+	<item id="24773" article="an" name="Little Adventurer Doll">
+		<attribute key="weight" value="2613" />
+		<attribute key="decayTo" value="24772" />
+		<attribute key="duration" value="3" />
+		<attribute key="description" value="This little fellow has faced many dangers. He will follow you anywhere. Awarded by TibiaGuias." />
+	</item>
+	<item id="24803" article="an" name="Cateroide's doll">
+		<attribute key="weight" value="2502" />
+		<attribute key="description" value="Fansite item of Cateroide. Created by Meninna Malvada." />
+	</item>
+	<item id="24804" article="an" name="Cateroide's doll">
+		<attribute key="weight" value="2502" />
+		<attribute key="decayTo" value="24803" />
+		<attribute key="duration" value="3" />
+		<attribute key="description" value="Fansite item of Cateroide. Created by Meninna Malvada." />
+	</item>
+	<item id="24805" article="an" name="Dark Wizard's Crown">
+		<attribute key="weight" value="2950" />
+		<attribute key="description" value="Fansite item of TibiaMisterios." />
+	</item>
+	<item id="24806" article="an" name="Dark Wizard's Crown">
+		<attribute key="weight" value="2950" />
+		<attribute key="decayTo" value="24805" />
+		<attribute key="duration" value="3" />
+		<attribute key="description" value="Fansite item of TibiaMisterios." />
+	</item>
 	<item id="30001" name="water" />
 	<item id="30002" name="blood" />
 	<item id="30003" name="beer" />

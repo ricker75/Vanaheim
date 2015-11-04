@@ -306,9 +306,9 @@
 	<monster name="Zanakeph" file="bosses/zanakeph.xml" />
 	<monster name="Zarabustor" file="bosses/zarabustor.xml" />
 	<monster name="Zevelon Duskbringer" file="bosses/zevelon duskbringer.xml" />
-	<monster name="Zomba" file="bosses/zomba.xml" />
 	<monster name="Zulazza The Corruptor" file="bosses/zulazza the corruptor.xml" />
 	<monster name="Zushuka" file="bosses/zushuka.xml" />
+	<monster name="Zomba" file="bosses/zomba.xml" />
 
 	<!-- Canines -->
 	<monster name="Crystal Wolf" file="canines/crystal wolf.xml" />
